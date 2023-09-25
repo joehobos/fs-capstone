@@ -10,7 +10,7 @@ export default function Home() {
 
   const filteredProducts = products.filter((item) => {
     return (
-      item.category === "men's clothing" || item.category === "women's clothing"
+      item.category === "men's clothing" || item.category === "women's clothing"  || item.category === "electronics" || item.category === "jewelery"
     )
   })
   console.log(filteredProducts)
