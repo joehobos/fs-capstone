@@ -4,6 +4,9 @@ export const CartContext = createContext()
 
 export default function CartProvider({children}){
     const [cart, setCart] = useState([])
+    const [itemAmount, setItemAmount] = useState(0)
+    const[total, setTotal]= useState(0)
+
     const addToCart = (product, id) => {
         const newItem = { ...product, amount: 1}
         console.log(newItem)
@@ -32,8 +35,55 @@ export default function CartProvider({children}){
         setCart(newCart)
     }
 
+    const clearCart = () => {
+        setCart([])
+    }
+
+    const increaseAmount = (id) => {
+        const item = cart.find((item) => item.id === id);
+        if (item) {
+          addToCart(item, id);
+          console.log(`${id} added`);
+        }
+      };
+      
+      const decreaseAmount = (id) => {
+        const cartItem = cart.find((item) => item.id === id);
+        if (cartItem) {
+          if (cartItem.amount > 1) {
+            const newCart = cart.map((item) => {
+              if (item.id === id) {
+                return { ...item, amount: cartItem.amount - 1 };
+              } else {
+                return item;
+              }
+            });
+            setCart(newCart);
+          } else {
+            removeFromCart(id);
+          }
+        }
+      };
+
+      useEffect(() => {
+        if(cart) {
+            const amount = cart.reduce((accumulator, currentItem)=> {
+                return accumulator + currentItem.amount
+            }, 0)
+            setItemAmount(amount)
+        }
+      }, [cart])
+
+      useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) =>{
+            return accumulator + currentItem.price * currentItem.amount
+        }, 0)
+        setTotal(total)
+      })
+      
+
     return (
-      <CartContext.Provider value={{cart, addToCart, removeFromCart}}>{children}</CartContext.Provider>
+      <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount, itemAmount, total}}>{children}</CartContext.Provider>
     )
   
 }
