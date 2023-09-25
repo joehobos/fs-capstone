@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Products from './components/Products'
 import Sidebar from './components/Sidebar.jsx'
 import Header from './components/Header'
+import ProductDetails from './components/ProductDetails';
 import './index.css'
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/product/:id' element={<Products />} />
+        <Route path='/product/:id' element={<ProductDetails />} />
       </Routes>
       <Sidebar />
      </Router>
