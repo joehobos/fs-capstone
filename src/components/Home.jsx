@@ -36,7 +36,7 @@ function Home() {
               <option value="men's clothing">Men's Clothing</option>
               <option value="women's clothing">Women's Clothing</option>
               <option value="electronics">Electronics</option>
-              <option value="jewelry">Jewelry</option> {/* Correct typo here */}
+              <option value="jewelry">Jewelry</option>
             </select>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-sm mx-auto md:max-w-none md:mx-0'>

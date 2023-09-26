@@ -7,6 +7,7 @@ import Header from './components/Header'
 import ProductDetails from './components/ProductDetails';
 import './index.css'
 import Confirmation from './components/Confirmation';
+import Login from './components/Login';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/product/:id' element={<ProductDetails />} />
         <Route path='/confirmation' element={<Confirmation />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
       <Sidebar />
      </Router>
